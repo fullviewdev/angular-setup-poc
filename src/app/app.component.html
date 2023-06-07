@@ -1,0 +1,16 @@
+<div style="margin: 20px; display: grid; justify-content: start; row-gap: 40px;">
+
+  <ng-container *ngIf="authService.$user.value; else elseBlock">
+    <h3>Authenticated User:</h3>
+    <h4>id: {{authService.$user.value.id}}</h4>
+    <h4>name: {{authService.$user.value.name}}</h4>
+    <h4>email: {{authService.$user.value.email}}</h4>
+    <button mat-raised-button color="accent" (click)="authService.logout()">Log Out</button>
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <h3>User not authenticated</h3>
+    <button mat-raised-button color="primary" (click)="authService.login()">Authenticate User</button>
+  </ng-template>
+
+</div>
